@@ -3,6 +3,6 @@ import displayTodos from './modules/displayTodos.js';
 import pageLayout from './modules/pageLayout.js';
 import './style.css';
 
-window.onload = displayTodos();
-pageLayout();
+window.onload = pageLayout();
+displayTodos();
 addTodo();
