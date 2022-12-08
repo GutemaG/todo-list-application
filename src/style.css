@@ -144,3 +144,9 @@ body {
 #todos::-webkit-scrollbar {
   display: none;
 }
+
+input:checked + input {
+  text-decoration: line-through;
+  color: #ccc;
+  font-style: italic;
+}
