@@ -49,6 +49,16 @@ export default class TodoCollection {
       }
     }
   }
+
+  updateDescription(index, description) {
+    for (let i = 0; i < this.todos.length; i += 1) {
+      if (this.todos[i].index === index) {
+        this.todos[i].description = description;
+        this.setToLocalStorage();
+        break;
+      }
+    }
+  }
 }
 
 const todoCollection = new TodoCollection(getDataFromLocalStorage('todos'));
