@@ -1,9 +1,8 @@
-import { getDataFromLocalStorage } from './local-storage.js';
 import { todoCollection } from './TodoCollection.js';
 
 const displayTodos = () => {
   const todosElement = document.querySelector('#todos');
-  const todos = getDataFromLocalStorage('todos');
+  const todos = todoCollection.getTodos();
   todosElement.innerHTML = '';
   todos.forEach((todo) => {
     const todoElement = document.createElement('li');

@@ -24,7 +24,7 @@ export default class TodoCollection {
   }
 
   getTodos() {
-    return this.todos;
+    return this.todos.sort((a, b) => b.index - a.index);
   }
 
   resetIndex() {
