@@ -1,5 +1,6 @@
-import removeTodo from './removeTodo.js';
 import { todoCollection } from './TodoCollection.js';
+import clearCompleted from './clearCompleted.js';
+import removeTodo from './removeTodo.js';
 
 const displayTodos = () => {
   const todosElement = document.querySelector('#todos');
@@ -13,7 +14,7 @@ const displayTodos = () => {
           >
         <input type="text" id="listItem" class='description' value= "${todo.description}">
         <i class="fa-solid fa-ellipsis-vertical move"></i>
-        <i class="fa-solid fa-trash-can delete"></i>
+        <i class="fa-solid fa-trash-can delete" id="delete-${todo.index}"></i>
       </li>`;
     todosElement.appendChild(todoElement);
   });
@@ -29,7 +30,6 @@ const displayTodos = () => {
       todoCollection.updateDescription(index + 1, description.value);
     });
   });
-
   const formContainer = document.querySelector('#add-new-form-container');
   formContainer.innerHTML = `
     <form class="add-new-task" action="">
@@ -39,7 +39,6 @@ const displayTodos = () => {
       </button>
   </form>
   `;
-
   const form = formContainer.querySelector('form');
   form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -51,8 +50,25 @@ const displayTodos = () => {
 
   const clearButton = document.querySelector('.clear-completed');
   clearButton.addEventListener('click', () => {
-    removeTodo();
+    clearCompleted();
     displayTodos();
+  });
+
+  const todosInputs = document.querySelectorAll('.todo');
+  todosInputs.forEach((todo, index) => {
+    const trash = document.querySelector(`#delete-${index + 1}`);
+    trash.addEventListener('click', () => {
+      removeTodo(index + 1);
+      displayTodos();
+    });
+    todo.addEventListener('mouseover', () => {
+      trash.style.display = 'inline';
+    });
+
+    todo.addEventListener('mouseout', () => {
+      const trash = document.querySelector(`#delete-${index + 1}`);
+      trash.style.display = 'none';
+    });
   });
 };
 

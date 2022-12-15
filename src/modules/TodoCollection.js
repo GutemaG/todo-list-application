@@ -15,8 +15,7 @@ export default class TodoCollection {
   }
 
   removeTodo(index) {
-    this.todos = this.todos.filter((todo, todoIndex) => todoIndex !== index);
-    this.setToLocalStorage();
+    this.todos = this.todos.filter((todo) => todo.index !== index);
     this.resetIndex();
   }
 

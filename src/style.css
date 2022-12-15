@@ -117,6 +117,8 @@ body {
 .delete {
   cursor: pointer;
   display: none;
+  color: red;
+  padding-left: 5px;
 }
 
 .move {
