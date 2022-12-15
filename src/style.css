@@ -115,6 +115,8 @@ body {
 }
 
 .delete {
+  color: red;
+  margin-left: 3px;
   cursor: pointer;
   display: none;
 }
