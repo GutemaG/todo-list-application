@@ -11,6 +11,7 @@ export default class TodoCollection {
     const todo = new Todo({ description, index });
     this.todos.push(todo);
     this.setToLocalStorage();
+    return this.todos;
   }
 
   removeTodo(index) {
@@ -24,7 +25,7 @@ export default class TodoCollection {
   }
 
   getTodos() {
-    return this.todos.sort((a, b) => b.index - a.index);
+    return this.todos;
   }
 
   resetIndex() {
