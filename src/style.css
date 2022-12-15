@@ -150,3 +150,11 @@ input:checked + input {
   color: #ccc;
   font-style: italic;
 }
+
+.description {
+  padding: 10px;
+}
+
+.description:focus {
+  background-color: rgb(207, 150, 94);
+}
