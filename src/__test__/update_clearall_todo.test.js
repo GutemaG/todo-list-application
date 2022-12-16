@@ -3,6 +3,7 @@
 */
 
 import updatedTodo from '../modules/updateTodo.js';
+import markAsCompleted from '../modules/markAsCompleted.js';
 
 describe('Testing update, clear-completed and mark as completed', () => {
   test('testing update', () => {
@@ -36,4 +37,25 @@ describe('Testing update, clear-completed and mark as completed', () => {
     const list = document.querySelectorAll('.todo-item');
     expect(list).toHaveLength(afterUpdated.length);
   });
+
+  test('testing mark as completed', () => {
+    const dataInLocalStorage = [
+      {
+        description: 'todo-1',
+        completed: false,
+        index: 1,
+      },
+    ];
+    localStorage.setItem('todos', JSON.stringify(dataInLocalStorage));
+    const afterUpdated = [
+      {
+        description: 'todo-1',
+        completed: true,
+        index: 1,
+      },
+    ];
+    markAsCompleted(1);
+    expect(JSON.parse(localStorage.getItem('todos'))).toEqual(afterUpdated);
+  });
+
 });
