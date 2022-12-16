@@ -10,7 +10,7 @@ export default class TodoCollection {
     const index = this.todos.length + 1;
     const todo = new Todo({ description, index });
     this.todos.push(todo);
-    this.setToLocalStorage();
+    this.setToLocalStorage(this.todos);
     return this.todos;
   }
 
@@ -19,45 +19,46 @@ export default class TodoCollection {
     this.resetIndex();
   }
 
-  setToLocalStorage() {
+  setToLocalStorage(todos) {
+    this.todos = todos;
     localStorage.setItem('todos', JSON.stringify(this.todos));
-  }
-
-  getTodos() {
-    return this.todos;
   }
 
   resetIndex() {
     this.todos.forEach((todo, index) => {
       todo.index = index + 1;
     });
-    this.setToLocalStorage();
+    this.setToLocalStorage(this.todos);
   }
 
-  clearCompleted() {
+  clearCompleted(todos) {
+    this.todos = todos;
     this.todos = this.todos.filter((todo) => todo.completed !== true);
-    this.setToLocalStorage();
+    this.setToLocalStorage(this.todos);
     this.resetIndex();
   }
 
-  markAsCompleted(index) {
+  markAsCompleted(index, todos) {
+    this.todos = todos;
     for (let i = 0; i < this.todos.length; i += 1) {
       if (this.todos[i].index === index) {
         this.todos[i].completed = !this.todos[i].completed;
-        this.setToLocalStorage();
+        this.setToLocalStorage(this.todos);
         break;
       }
     }
   }
 
-  updateDescription(index, description) {
+  updateDescription(index, description, todos) {
+    this.todos = todos;
     for (let i = 0; i < this.todos.length; i += 1) {
       if (this.todos[i].index === index) {
         this.todos[i].description = description;
-        this.setToLocalStorage();
+        this.setToLocalStorage(this.todos);
         break;
       }
     }
+    return this.todos;
   }
 }
 
