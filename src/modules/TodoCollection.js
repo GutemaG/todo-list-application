@@ -14,8 +14,8 @@ export default class TodoCollection {
     return this.todos;
   }
 
-  removeTodo(index) {
-    this.todos = this.todos.filter((todo) => todo.index !== index);
+  removeTodo(index, todos) {
+    this.todos = todos.filter((todo) => todo.index !== index);
     this.resetIndex();
   }
 
