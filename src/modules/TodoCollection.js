@@ -11,11 +11,11 @@ export default class TodoCollection {
     const todo = new Todo({ description, index });
     this.todos.push(todo);
     this.setToLocalStorage();
+    return this.todos;
   }
 
-  removeTodo(index) {
-    this.todos = this.todos.filter((todo, todoIndex) => todoIndex !== index);
-    this.setToLocalStorage();
+  removeTodo(index, todos) {
+    this.todos = todos.filter((todo) => todo.index !== index);
     this.resetIndex();
   }
 
@@ -24,7 +24,7 @@ export default class TodoCollection {
   }
 
   getTodos() {
-    return this.todos.sort((a, b) => b.index - a.index);
+    return this.todos;
   }
 
   resetIndex() {

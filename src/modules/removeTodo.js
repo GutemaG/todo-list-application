@@ -1,13 +1,8 @@
-import displayTodos from './displayTodos.js';
+import { getDataFromLocalStorage } from './local-storage.js';
 import { todoCollection } from './TodoCollection.js';
 
-const removeTodo = () => {
-  const clearButton = document.querySelector('.clear-completed');
-
-  clearButton.addEventListener('click', () => {
-    todoCollection.clearCompleted();
-    displayTodos();
-  });
+const removeTodo = (index, key = 'todos') => {
+  todoCollection.removeTodo(index, getDataFromLocalStorage(key));
 };
 
 export default removeTodo;

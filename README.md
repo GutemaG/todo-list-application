@@ -131,6 +131,10 @@ You can deploy this project using: GitHub page
 - GitHub: [@GutemaG](https://github.com/gutemaG)
 - LinkedIn: [@birhanugudisa](https://www.linkedin.com/in/birhanugudisa/)
 
+👤 **PedroH Neves**
+- GitHub: [@PedroH-Neves](https://github.com/PedroH-Neves)
+- Twitter: [@PedroHDN710](https://twitter.com/PedroHDN710)
+- LinkedIn: [Pedro Neves](https://www.linkedin.com/in/pedro-henrique-domingues-neves-8a5878244/)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
