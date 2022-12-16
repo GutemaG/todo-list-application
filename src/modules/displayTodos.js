@@ -1,10 +1,13 @@
-import { todoCollection } from './TodoCollection.js';
 import clearCompleted from './clearCompleted.js';
+import { getDataFromLocalStorage } from './local-storage.js';
+import markAsCompleted from './markAsCompleted.js';
 import removeTodo from './removeTodo.js';
+import { todoCollection } from './TodoCollection.js';
+import updatedTodo from './updateTodo.js';
 
 const displayTodos = () => {
   const todosElement = document.querySelector('#todos');
-  const todos = todoCollection.getTodos();
+  const todos = getDataFromLocalStorage('todos');
   todosElement.innerHTML = '';
   todos.forEach((todo) => {
     const todoElement = document.createElement('li');
@@ -21,13 +24,13 @@ const displayTodos = () => {
   const checkboxs = todosElement.querySelectorAll('.checkbox');
   checkboxs.forEach((checkbox, index) => {
     checkbox.addEventListener('change', () => {
-      todoCollection.markAsCompleted(index + 1);
+      markAsCompleted(index + 1);
     });
   });
   const descriptions = todosElement.querySelectorAll('.description');
   descriptions.forEach((description, index) => {
     description.addEventListener('change', () => {
-      todoCollection.updateDescription(index + 1, description.value);
+      updatedTodo(index + 1, description.value);
     });
   });
   const formContainer = document.querySelector('#add-new-form-container');
@@ -47,7 +50,6 @@ const displayTodos = () => {
     form.description.value = '';
     displayTodos();
   });
-
   const clearButton = document.querySelector('.clear-completed');
   clearButton.addEventListener('click', () => {
     clearCompleted();
