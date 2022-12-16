@@ -24,10 +24,6 @@ export default class TodoCollection {
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 
-  getTodos() {
-    return this.todos;
-  }
-
   resetIndex() {
     this.todos.forEach((todo, index) => {
       todo.index = index + 1;

@@ -1,4 +1,5 @@
 import clearCompleted from './clearCompleted.js';
+import { getDataFromLocalStorage } from './local-storage.js';
 import markAsCompleted from './markAsCompleted.js';
 import removeTodo from './removeTodo.js';
 import { todoCollection } from './TodoCollection.js';
@@ -6,7 +7,7 @@ import updatedTodo from './updateTodo.js';
 
 const displayTodos = () => {
   const todosElement = document.querySelector('#todos');
-  const todos = todoCollection.getTodos();
+  const todos = getDataFromLocalStorage('todos');
   todosElement.innerHTML = '';
   todos.forEach((todo) => {
     const todoElement = document.createElement('li');

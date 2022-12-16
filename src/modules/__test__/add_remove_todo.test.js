@@ -3,6 +3,7 @@
 */
 
 import addTodo from '../addTodo.js';
+import { getDataFromLocalStorage, setLocalStorage } from '../local-storage.js';
 import removeTodo from '../removeTodo.js';
 
 describe('Testing add and remove', () => {
@@ -17,7 +18,7 @@ describe('Testing add and remove', () => {
       },
     ];
     expect(dataInLocalStorage).toEqual(result);
-    localStorage.setItem('todos', JSON.stringify(result));
+    setLocalStorage('todos', result);
     expect(JSON.parse(localStorage.getItem('todos'))).toEqual(result);
     expect(JSON.parse(localStorage.getItem('todos'))).toEqual(result);
 
@@ -41,15 +42,15 @@ describe('Testing add and remove', () => {
       { description: 'todo-3', completed: false, index: 3 },
       { description: 'todo-4', completed: false, index: 4 },
     ];
-    localStorage.setItem('todos', JSON.stringify(todos));
+    setLocalStorage('todos', todos);
     removeTodo(4);
     const afterRemoving = [
       { description: 'todo-1', completed: false, index: 1 },
       { description: 'todo-2', completed: false, index: 2 },
       { description: 'todo-3', completed: false, index: 3 },
     ];
-    expect(JSON.parse(localStorage.getItem('todos'))).toHaveLength(afterRemoving.length);
-    expect(JSON.parse(localStorage.getItem('todos'))).toEqual(afterRemoving);
+    expect(getDataFromLocalStorage('todos')).toHaveLength(afterRemoving.length);
+    expect(getDataFromLocalStorage('todos')).toEqual(afterRemoving);
 
     document.body.innerHTML = '<div><ul id="todos"></ul></div>';
     const todosContainer = document.querySelector('#todos');
