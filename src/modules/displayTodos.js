@@ -1,8 +1,10 @@
+/* eslint-disable linebreak-style */
 import clearCompleted from './clearCompleted.js';
 import { getDataFromLocalStorage } from './local-storage.js';
 import markAsCompleted from './markAsCompleted.js';
 import removeTodo from './removeTodo.js';
 import { todoCollection } from './TodoCollection.js';
+
 import updatedTodo from './updateTodo.js';
 
 const displayTodos = () => {
@@ -16,7 +18,7 @@ const displayTodos = () => {
         <input type="checkbox" id="checked" class='checkbox' ${todo.completed ? 'checked' : ''}
           >
         <input type="text" id="listItem" class='description' value= "${todo.description}">
-        <i class="fa-solid fa-ellipsis-vertical move"></i>
+        <i class="fa-solid fa-ellipsis-vertical move"></i> &nbsp;
         <i class="fa-solid fa-trash-can delete" id="delete-${todo.index}"></i>
       </li>`;
     todosElement.appendChild(todoElement);
